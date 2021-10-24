@@ -20,10 +20,17 @@ public class TodoList extends Application {
         Parent root =
                 FXMLLoader.load(Objects.requireNonNull(getClass().getResource("TodoList.fxml")));
 
-        Scene scene = new Scene(root); // attach scene graph to scene
-        stage.setTitle("Todo List"); // displayed in window's title bar
-        stage.setScene(scene); // attach scene to stage
-        stage.show(); // display the stage
+        // attach scene graph to scene
+        Scene scene = new Scene(root);
+
+        // displayed in window's title bar
+        stage.setTitle("Todo List");
+
+        // attach scene to stage
+        stage.setScene(scene);
+        
+        // display the stage
+        stage.show();
     }
 
     public static void main(String[] args) {
