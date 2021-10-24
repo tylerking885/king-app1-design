@@ -15,6 +15,7 @@ import java.util.Objects;
 
 
 public class TodoList extends Application {
+
     @Override
     public void start(Stage stage) throws Exception {
         Parent root =
