@@ -11,12 +11,14 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.util.Objects;
+
 
 public class TodoList extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         Parent root =
-                FXMLLoader.load(getClass().getResource("TodoList.fxml"));
+                FXMLLoader.load(Objects.requireNonNull(getClass().getResource("TodoList.fxml")));
 
         Scene scene = new Scene(root); // attach scene graph to scene
         stage.setTitle("Todo List"); // displayed in window's title bar
@@ -29,4 +31,3 @@ public class TodoList extends Application {
         launch(args);
     }
 }
-

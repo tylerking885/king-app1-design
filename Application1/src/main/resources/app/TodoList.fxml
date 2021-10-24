@@ -9,21 +9,39 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane dividerPositions="0.5" orientation="VERTICAL" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.TodoList">
-    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="770.0">
-        <Button layoutX="14.0" layoutY="10.0" mnemonicParsing="false" text="Add New">
-            <font>
-                <Font size="14.0" />
-            </font>
-        </Button>
-        <DatePicker layoutX="108.0" layoutY="13.0" />
-        <TextField layoutX="301.0" layoutY="13.0" prefHeight="25.0" prefWidth="455.0" promptText="Enter Description here...">
+<SplitPane dividerPositions="0.5" orientation="VERTICAL" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.GuiController">
+    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="51.0" prefWidth="1032.0">
+        <Button fx:id="addButton" layoutX="14.0" layoutY="13.0" mnemonicParsing="false" onAction="#addEventHandler" text="Add">
             <font>
                 <Font size="13.0" />
             </font>
-        </TextField>
-        <Separator layoutX="96.0" layoutY="1.0" orientation="VERTICAL" prefHeight="50.0" prefWidth="6.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="96.0" AnchorPane.topAnchor="1.0" />
-        <Separator layoutX="288.0" orientation="VERTICAL" prefHeight="50.0" prefWidth="6.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="288.0" AnchorPane.topAnchor="0.0" />
+        </Button>
+        <DatePicker fx:id="datePicker" layoutX="437.0" layoutY="14.0" prefHeight="25.0" prefWidth="190.0" />
+        <TextField fx:id="descriptionTextField" layoutX="651.0" layoutY="13.0" prefHeight="25.0" prefWidth="366.0" promptText="Enter New ToDo here..." />
+        <Separator layoutX="62.0" orientation="VERTICAL" prefHeight="51.0" prefWidth="9.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="62.0" AnchorPane.topAnchor="0.0" />
+        <Separator layoutX="635.0" layoutY="1.0" orientation="VERTICAL" prefHeight="51.0" prefWidth="9.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="635.0" AnchorPane.topAnchor="1.0" />
+        <Button fx:id="deleteButton" layoutX="134.0" layoutY="13.0" mnemonicParsing="false" onAction="#deleteEvent" text="Delete">
+            <font>
+                <Font size="13.0" />
+            </font>
+        </Button>
+        <Separator layoutX="123.0" orientation="VERTICAL" prefHeight="51.0" prefWidth="6.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="123.0" AnchorPane.topAnchor="0.0" />
+        <Button fx:id="editButton" layoutX="75.0" layoutY="13.0" mnemonicParsing="false" onAction="#editEvent" text="Edit">
+            <font>
+                <Font size="13.0" />
+            </font>
+        </Button>
+        <Separator layoutX="257.0" orientation="VERTICAL" prefHeight="51.0" prefWidth="6.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="257.0" AnchorPane.topAnchor="0.0" />
+        <Button fx:id="markButton" layoutX="205.0" layoutY="13.0" mnemonicParsing="false" onAction="#markEntriesComplete" text="Mark">
+            <font>
+                <Font size="13.0" />
+            </font>
+        </Button>
+        <Separator layoutX="195.0" orientation="VERTICAL" prefHeight="51.0" prefWidth="6.0" />
+        <Button fx:id="displayMarkButton" layoutX="266.0" layoutY="14.0" mnemonicParsing="false" onAction="#displayCompletedTasks" text="Disp Mark" />
+        <Separator layoutX="341.0" layoutY="1.0" orientation="VERTICAL" prefHeight="51.0" prefWidth="6.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="341.0" AnchorPane.topAnchor="1.0" />
+        <Button fx:id="displayNoMarkButton" layoutX="348.0" layoutY="14.0" mnemonicParsing="false" onAction="#displayNonCompletedTasks" text="Disp No M" />
+        <Separator layoutX="426.0" layoutY="1.0" orientation="VERTICAL" prefHeight="51.0" prefWidth="6.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="426.0" AnchorPane.topAnchor="1.0" />
     </AnchorPane>
-    <ListView prefHeight="200.0" prefWidth="200.0" />
+    <ListView fx:id="eventList" prefHeight="200.0" prefWidth="200.0" />
 </SplitPane>
