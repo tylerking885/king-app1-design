@@ -5,9 +5,14 @@
 
 package app;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class LocalEvent {
+public class LocalEvent implements Serializable {
+
+    @Serial
+    private static final long serialVersionUID = 1L;
 
     // Variables used in the To do list.
     private LocalDate date;
