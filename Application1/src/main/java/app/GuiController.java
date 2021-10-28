@@ -85,6 +85,7 @@ public class GuiController implements Initializable {
 
     @FXML
     private void editEvent() {
+
         int selectedID = eventList.getSelectionModel().getSelectedIndex();
         eventList.edit(selectedID);
     }

@@ -10,31 +10,31 @@
 
 <SplitPane dividerPositions="0.5" orientation="VERTICAL" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.GuiController">
     <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="110.0" prefWidth="692.0">
-        <Button fx:id="addButton" layoutX="222.0" layoutY="14.0" mnemonicParsing="false" onAction="#addEventHandler" text="Add">
+        <Button fx:id="addButton" layoutX="263.0" layoutY="14.0" mnemonicParsing="false" onAction="#addEventHandler" text="Add">
             <font>
                 <Font size="13.0" />
             </font>
         </Button>
-        <DatePicker fx:id="datePicker" layoutX="20.0" layoutY="15.0" prefHeight="25.0" prefWidth="190.0" />
-        <TextField fx:id="descriptionTextField" layoutX="20.0" layoutY="57.0" prefHeight="25.0" prefWidth="366.0" promptText="Enter New ToDo here..." />
-        <Button fx:id="deleteButton" layoutX="276.0" layoutY="14.0" mnemonicParsing="false" onAction="#deleteSelectedEvent" text="Delete">
+        <DatePicker fx:id="datePicker" layoutX="61.0" layoutY="15.0" prefHeight="25.0" prefWidth="190.0" />
+        <TextField fx:id="descriptionTextField" layoutX="61.0" layoutY="57.0" prefHeight="25.0" prefWidth="366.0" promptText="Enter New ToDo here..." />
+        <Button fx:id="deleteButton" layoutX="317.0" layoutY="14.0" mnemonicParsing="false" onAction="#deleteSelectedEvent" text="Delete">
             <font>
                 <Font size="13.0" />
             </font>
         </Button>
-        <Button fx:id="editButton" layoutX="345.0" layoutY="14.0" mnemonicParsing="false" onAction="#editEvent" text="Edit">
+        <Button fx:id="editButton" layoutX="386.0" layoutY="14.0" mnemonicParsing="false" onAction="#editEvent" text="Edit">
             <font>
                 <Font size="13.0" />
             </font>
         </Button>
-        <Button fx:id="markButton" layoutX="401.0" layoutY="14.0" mnemonicParsing="false" text="Mark">
+        <Button fx:id="markButton" layoutX="442.0" layoutY="14.0" mnemonicParsing="false" text="Mark">
             <font>
                 <Font size="13.0" />
             </font>
         </Button>
-        <Button fx:id="displayMarkButton" layoutX="463.0" layoutY="15.0" mnemonicParsing="false" text="Disp Mark" />
-        <Button fx:id="displayNoMarkButton" layoutX="548.0" layoutY="15.0" mnemonicParsing="false" text="Disp No M" />
-      <Button fx:id="deleteAllButton" layoutX="399.0" layoutY="57.0" mnemonicParsing="false" onAction="#deleteAllEvent" text="Del. All" />
+        <Button fx:id="displayMarkButton" layoutX="505.0" layoutY="15.0" mnemonicParsing="false" text="Disp Mark" />
+        <Button fx:id="displayNoMarkButton" layoutX="504.0" layoutY="57.0" mnemonicParsing="false" text="Disp No M" />
+      <Button fx:id="deleteAllButton" layoutX="440.0" layoutY="57.0" mnemonicParsing="false" onAction="#deleteAllEvent" text="Del. All" />
     </AnchorPane>
     <ListView fx:id="eventList" prefHeight="200.0" prefWidth="200.0" />
 </SplitPane>
