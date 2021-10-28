@@ -3,45 +3,38 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 <SplitPane dividerPositions="0.5" orientation="VERTICAL" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.GuiController">
-    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="51.0" prefWidth="1032.0">
-        <Button fx:id="addButton" layoutX="14.0" layoutY="13.0" mnemonicParsing="false" onAction="#addEventHandler" text="Add">
+    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="110.0" prefWidth="692.0">
+        <Button fx:id="addButton" layoutX="222.0" layoutY="14.0" mnemonicParsing="false" onAction="#addEventHandler" text="Add">
             <font>
                 <Font size="13.0" />
             </font>
         </Button>
-        <DatePicker fx:id="datePicker" layoutX="437.0" layoutY="14.0" prefHeight="25.0" prefWidth="190.0" />
-        <TextField fx:id="descriptionTextField" layoutX="651.0" layoutY="13.0" prefHeight="25.0" prefWidth="366.0" promptText="Enter New ToDo here..." />
-        <Separator layoutX="62.0" orientation="VERTICAL" prefHeight="51.0" prefWidth="9.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="62.0" AnchorPane.topAnchor="0.0" />
-        <Separator layoutX="635.0" layoutY="1.0" orientation="VERTICAL" prefHeight="51.0" prefWidth="9.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="635.0" AnchorPane.topAnchor="1.0" />
-        <Button fx:id="deleteButton" layoutX="134.0" layoutY="13.0" mnemonicParsing="false" onAction="#deleteEvent" text="Delete">
+        <DatePicker fx:id="datePicker" layoutX="20.0" layoutY="15.0" prefHeight="25.0" prefWidth="190.0" />
+        <TextField fx:id="descriptionTextField" layoutX="20.0" layoutY="57.0" prefHeight="25.0" prefWidth="366.0" promptText="Enter New ToDo here..." />
+        <Button fx:id="deleteButton" layoutX="276.0" layoutY="14.0" mnemonicParsing="false" onAction="#deleteSelectedEvent" text="Delete">
             <font>
                 <Font size="13.0" />
             </font>
         </Button>
-        <Separator layoutX="123.0" orientation="VERTICAL" prefHeight="51.0" prefWidth="6.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="123.0" AnchorPane.topAnchor="0.0" />
-        <Button fx:id="editButton" layoutX="75.0" layoutY="13.0" mnemonicParsing="false" onAction="#editEvent" text="Edit">
+        <Button fx:id="editButton" layoutX="345.0" layoutY="14.0" mnemonicParsing="false" onAction="#editEvent" text="Edit">
             <font>
                 <Font size="13.0" />
             </font>
         </Button>
-        <Separator layoutX="257.0" orientation="VERTICAL" prefHeight="51.0" prefWidth="6.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="257.0" AnchorPane.topAnchor="0.0" />
-        <Button fx:id="markButton" layoutX="205.0" layoutY="13.0" mnemonicParsing="false" text="Mark">
+        <Button fx:id="markButton" layoutX="401.0" layoutY="14.0" mnemonicParsing="false" text="Mark">
             <font>
                 <Font size="13.0" />
             </font>
         </Button>
-        <Separator layoutX="195.0" orientation="VERTICAL" prefHeight="51.0" prefWidth="6.0" />
-        <Button fx:id="displayMarkButton" layoutX="266.0" layoutY="14.0" mnemonicParsing="false" text="Disp Mark" />
-        <Separator layoutX="341.0" layoutY="1.0" orientation="VERTICAL" prefHeight="51.0" prefWidth="6.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="341.0" AnchorPane.topAnchor="1.0" />
-        <Button fx:id="displayNoMarkButton" layoutX="348.0" layoutY="14.0" mnemonicParsing="false" text="Disp No M" />
-        <Separator layoutX="426.0" layoutY="1.0" orientation="VERTICAL" prefHeight="51.0" prefWidth="6.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="426.0" AnchorPane.topAnchor="1.0" />
+        <Button fx:id="displayMarkButton" layoutX="463.0" layoutY="15.0" mnemonicParsing="false" text="Disp Mark" />
+        <Button fx:id="displayNoMarkButton" layoutX="548.0" layoutY="15.0" mnemonicParsing="false" text="Disp No M" />
+      <Button fx:id="deleteAllButton" layoutX="399.0" layoutY="57.0" mnemonicParsing="false" onAction="#deleteAllEvent" text="Del. All" />
     </AnchorPane>
     <ListView fx:id="eventList" prefHeight="200.0" prefWidth="200.0" />
 </SplitPane>

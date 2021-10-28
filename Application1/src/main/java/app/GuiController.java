@@ -23,6 +23,9 @@ public class GuiController implements Initializable {
     Button deleteButton;
 
     @FXML
+    Button deleteAllButton;
+
+    @FXML
     Button editButton;
 
     @FXML
@@ -72,10 +75,13 @@ public class GuiController implements Initializable {
     }
 
     @FXML
-    private void deleteEvent() {
+    private void deleteSelectedEvent() {
         int selectedID = eventList.getSelectionModel().getSelectedIndex();
         eventList.getItems().remove(selectedID);
     }
+
+    @FXML
+    private void deleteAllEvent() { eventList.getItems().clear(); }
 
     @FXML
     private void editEvent() {

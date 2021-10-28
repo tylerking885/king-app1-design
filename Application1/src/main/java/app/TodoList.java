@@ -20,7 +20,7 @@ public class TodoList extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        Scene scene = new Scene(loadFXML(), 1050, 120);
+        Scene scene = new Scene(loadFXML(), 900, 120);
         stage.setScene(scene);
         stage.setTitle("Todo List");
         stage.show();
