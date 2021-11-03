@@ -55,7 +55,8 @@ public class GuiController implements Initializable {
     @FXML
     public ComboBox<String> cbMenu;
 
-    ObservableList<String> list = FXCollections.observableArrayList("Load", "Save");
+    ObservableList<String> menuList = FXCollections.observableArrayList("Load", "Save");
+
 
     FileChooser fileChooser = new FileChooser();
 
@@ -79,7 +80,7 @@ public class GuiController implements Initializable {
     public void initialize(URL arg0, ResourceBundle arg1) {
         try {
             fileChooser.setInitialDirectory(new File("C:\\users"));
-            cbMenu.setItems(list);
+            cbMenu.setItems(menuList);
             var events = EventSerializer.deserialize();
             eventList.getItems().addAll(events);
         }catch(Exception e)  {
@@ -90,17 +91,32 @@ public class GuiController implements Initializable {
     }
 
     public void comboChanged(ActionEvent event) {
-        Window stage = cbMenu.getScene().getWindow();
-        fileChooser.setTitle("Save Dialog");
 
-        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("text file", "*.txt"));
+        int selectionIndex = cbMenu.getSelectionModel().getSelectedIndex();
 
-        try{
-            File file = fileChooser.showSaveDialog(stage);
-            fileChooser.setInitialDirectory(file.getParentFile());
+        if (selectionIndex == 1) {
+            Window stage = cbMenu.getScene().getWindow();
+            fileChooser.setTitle("Save Dialog");
+
+            fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("text file", "*.txt"));
+
+            try {
+                File file = fileChooser.showSaveDialog(stage);
+                fileChooser.setInitialDirectory(file.getParentFile());
+            } catch (Exception ex) {
+
+            }
         }
-        catch (Exception ex){
+        else if (selectionIndex == 0){
+            Window stage = cbMenu.getScene().getWindow();
+            fileChooser.setTitle("Load Dialog");
 
+            try {
+                File file = fileChooser.showOpenDialog(stage);
+                fileChooser.setInitialDirectory(file.getParentFile());
+            } catch (Exception ex) {
+
+            }
         }
     }
 
