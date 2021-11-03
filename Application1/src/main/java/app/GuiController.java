@@ -5,14 +5,20 @@
 
 package app;
 
+import java.io.File;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import app.util.EventSerializer;
+import javafx.stage.FileChooser;
+import javafx.stage.Window;
 
 public class GuiController implements Initializable {
 
@@ -47,6 +53,13 @@ public class GuiController implements Initializable {
     ListView<LocalEvent> eventList;
 
     @FXML
+    public ComboBox<String> cbMenu;
+
+    ObservableList<String> list = FXCollections.observableArrayList("Load", "Save");
+
+    FileChooser fileChooser = new FileChooser();
+
+    @FXML
     private void addEventHandler() {
 
         var newEvent = new LocalEvent(datePicker.getValue(), descriptionTextField.getText());
@@ -65,12 +78,29 @@ public class GuiController implements Initializable {
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         try {
+            fileChooser.setInitialDirectory(new File("C:\\users"));
+            cbMenu.setItems(list);
             var events = EventSerializer.deserialize();
             eventList.getItems().addAll(events);
         }catch(Exception e)  {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("TodoFX");
             alert.setHeaderText("Events could not be loaded from file system");
+        }
+    }
+
+    public void comboChanged(ActionEvent event) {
+        Window stage = cbMenu.getScene().getWindow();
+        fileChooser.setTitle("Save Dialog");
+
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("text file", "*.txt"));
+
+        try{
+            File file = fileChooser.showSaveDialog(stage);
+            fileChooser.setInitialDirectory(file.getParentFile());
+        }
+        catch (Exception ex){
+
         }
     }
 
