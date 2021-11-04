@@ -16,7 +16,12 @@ import java.io.IOException;
 
 
 public class TodoList extends Application {
+
     private static GuiController AppController;
+
+    public static void main(String[] args) {
+        launch();
+    }
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -38,9 +43,4 @@ public class TodoList extends Application {
         AppController = fxmlLoader.getController();
         return parent;
     }
-
-    public static void main(String[] args) {
-        launch();
-    }
-
 }

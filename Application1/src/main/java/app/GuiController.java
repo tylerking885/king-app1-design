@@ -57,7 +57,6 @@ public class GuiController implements Initializable {
 
     ObservableList<String> menuList = FXCollections.observableArrayList("Load", "Save");
 
-
     FileChooser fileChooser = new FileChooser();
 
     @FXML
@@ -97,12 +96,13 @@ public class GuiController implements Initializable {
         if (selectionIndex == 1) {
             Window stage = cbMenu.getScene().getWindow();
             fileChooser.setTitle("Save Dialog");
-
+            fileChooser.setInitialFileName("mytodo");
             fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("text file", "*.txt"));
 
             try {
                 File file = fileChooser.showSaveDialog(stage);
                 fileChooser.setInitialDirectory(file.getParentFile());
+                saveFile("todo.txt", file);
             } catch (Exception ex) {
 
             }
@@ -119,6 +119,13 @@ public class GuiController implements Initializable {
             }
         }
     }
+    public void saveFile(String File, File file) {
+        // TODO: code for saving a txt file.
+    }
+
+    public void openFile(){
+        // TODO: code for opening a txt file.
+    }
 
     @FXML
     private void deleteSelectedEvent() {
@@ -132,7 +139,11 @@ public class GuiController implements Initializable {
     @FXML
     private void editEvent() {
 
-        int selectedID = eventList.getSelectionModel().getSelectedIndex();
-        eventList.edit(selectedID);
+        // TODO: code for editing event.
+    }
+
+    @FXML
+    void done(ActionEvent event) {
+        // TODO: code for marking event completed.
     }
 }

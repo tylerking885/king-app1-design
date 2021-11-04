@@ -31,7 +31,7 @@
                 <Font size="13.0" />
             </font>
         </Button>
-        <Button fx:id="markButton" layoutX="522.0" layoutY="7.0" mnemonicParsing="false" text="Mark">
+        <Button fx:id="markButton" layoutX="522.0" layoutY="7.0" mnemonicParsing="false" onAction="#done" text="Mark">
             <font>
                 <Font size="13.0" />
             </font>
@@ -50,5 +50,5 @@
          </font></Button>
       <ComboBox fx:id="cbMenu" layoutX="8.0" layoutY="8.0" onAction="#comboChanged" prefHeight="25.0" prefWidth="73.0" promptText="File" />
     </AnchorPane>
-    <ListView fx:id="eventList" prefHeight="200.0" prefWidth="200.0" />
+    <ListView fx:id="eventList" editable="true" prefHeight="200.0" prefWidth="200.0" />
 </SplitPane>

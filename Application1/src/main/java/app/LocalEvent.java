@@ -17,8 +17,9 @@ public class LocalEvent implements Serializable {
     // Variables used in the To do list.
     private LocalDate date;
     private String description;
+    private boolean completed = false;
 
-    // Getters and Setters for date and description.
+    // Getters and Setters for date, description, and completed.
     public LocalDate getDate() {
         return date;
     }
@@ -35,6 +36,10 @@ public class LocalEvent implements Serializable {
         this.description = description;
     }
 
+    public void setCompleted(boolean completed) {
+        this.completed= completed;
+    }
+
     // LocalEvent Constructor:
     public LocalEvent(LocalDate date, String description){
         this.setDate(date);
@@ -43,7 +48,5 @@ public class LocalEvent implements Serializable {
 
     // Overriding toString method so Display message is in a format that makes sense.
     @Override
-    public String toString(){
-        return "At: " + this.getDate() + " " + this.getDescription();
-    }
+    public String toString(){ return "At: " + this.getDate() + ": " + this.getDescription();}
 }

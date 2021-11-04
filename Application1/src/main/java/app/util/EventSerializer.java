@@ -29,7 +29,6 @@ public final class EventSerializer {
 
                 LocalEvent[] arr = new LocalEvent[event.length];
 
-
                 for (int i = 0; i < event.length; i++){
 
                     arr[i] = (LocalEvent) event[i];
