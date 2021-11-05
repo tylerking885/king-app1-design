@@ -36,14 +36,24 @@ public class LocalEvent implements Serializable {
         this.description = description;
     }
 
-    public void setCompleted(boolean completed) {
-        this.completed= completed;
+    public boolean getCompleted(){
+        return completed;
+    }
+
+    public void setCompleted() {
+        this.completed= true;
     }
 
     // LocalEvent Constructor:
     public LocalEvent(LocalDate date, String description){
         this.setDate(date);
         this.setDescription(description);
+    }
+
+    public LocalEvent(LocalDate date, String description, boolean completed){
+        this.setDate(date);
+        this.setDescription(description);
+        this.completed = completed;
     }
 
     // Overriding toString method so Display message is in a format that makes sense.

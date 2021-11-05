@@ -1,6 +1,5 @@
 package app.util;
 
-
 import app.LocalEvent;
 
 import java.io.FileInputStream;

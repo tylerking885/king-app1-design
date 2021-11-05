@@ -6,13 +6,17 @@
 package app;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URL;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
+import java.util.Scanner;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -21,6 +25,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Window;
 
 public class GuiController implements Initializable {
+    private boolean unsavedChanges = false;
 
     @FXML
     Button addButton;
@@ -53,7 +58,7 @@ public class GuiController implements Initializable {
     ListView<LocalEvent> eventList;
 
     @FXML
-    public ComboBox<String> cbMenu;
+    ComboBox<String> cbMenu;
 
     ObservableList<String> menuList = FXCollections.observableArrayList("Load", "Save");
 
@@ -69,6 +74,8 @@ public class GuiController implements Initializable {
         datePicker.setValue(LocalDate.now());
 
         descriptionTextField.setText("");
+
+        unsavedChanges = true;
     }
 
     public Object[] getEvents(){
@@ -89,7 +96,7 @@ public class GuiController implements Initializable {
         }
     }
 
-    public void comboChanged(ActionEvent event) {
+    public void comboChanged() {
 
         int selectionIndex = cbMenu.getSelectionModel().getSelectedIndex();
 
@@ -102,8 +109,8 @@ public class GuiController implements Initializable {
             try {
                 File file = fileChooser.showSaveDialog(stage);
                 fileChooser.setInitialDirectory(file.getParentFile());
-                saveFile("todo.txt", file);
-            } catch (Exception ex) {
+                saveFile(file);
+            } catch (Exception ignored) {
 
             }
         }
@@ -114,16 +121,40 @@ public class GuiController implements Initializable {
             try {
                 File file = fileChooser.showOpenDialog(stage);
                 fileChooser.setInitialDirectory(file.getParentFile());
-            } catch (Exception ex) {
+                openFile(file);
+            } catch (Exception ignored) {
 
             }
         }
     }
-    public void saveFile(String File, File file) {
-        // TODO: code for saving a txt file.
+    public void saveFile( File file) throws IOException {
+
+        PrintWriter pw = new PrintWriter(file);
+        ObservableList<LocalEvent> list = eventList.getItems();
+        for (LocalEvent event: list){
+            pw.write(event.getDescription());
+            pw.write("\n");
+            pw.write(event.getDate().toString());
+            pw.write("\n");
+            pw.write(event.getCompleted()+ "");
+            pw.write("\n");
+        }
+        pw.flush();
+        pw.close();
     }
 
-    public void openFile(){
+    public void openFile(File file) throws FileNotFoundException {
+        Scanner input = new Scanner(file);
+        while (input.hasNextLine()){
+            String description = input.nextLine();
+            String date = input.nextLine();
+            boolean getCompleted = input.nextBoolean();
+
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+            LocalDate localDate = LocalDate.parse(date,formatter);
+            LocalEvent localEvent = new LocalEvent(localDate,description,getCompleted);
+        }
         // TODO: code for opening a txt file.
     }
 
@@ -131,19 +162,24 @@ public class GuiController implements Initializable {
     private void deleteSelectedEvent() {
         int selectedID = eventList.getSelectionModel().getSelectedIndex();
         eventList.getItems().remove(selectedID);
+        unsavedChanges = true;
     }
 
     @FXML
-    private void deleteAllEvent() { eventList.getItems().clear(); }
+    private void deleteAllEvent() {
+        eventList.getItems().clear();
+        unsavedChanges = true;
+    }
 
     @FXML
     private void editEvent() {
-
+        unsavedChanges = true;
         // TODO: code for editing event.
     }
 
     @FXML
-    void done(ActionEvent event) {
+    void mark() {
+        unsavedChanges = true;
         // TODO: code for marking event completed.
     }
 }

@@ -31,7 +31,7 @@
                 <Font size="13.0" />
             </font>
         </Button>
-        <Button fx:id="markButton" layoutX="522.0" layoutY="7.0" mnemonicParsing="false" onAction="#done" text="Mark">
+        <Button fx:id="markButton" layoutX="522.0" layoutY="7.0" mnemonicParsing="false" onAction="#mark" text="Mark">
             <font>
                 <Font size="13.0" />
             </font>
