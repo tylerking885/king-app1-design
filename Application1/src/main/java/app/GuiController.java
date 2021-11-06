@@ -20,7 +20,6 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import app.util.EventSerializer;
 import javafx.stage.FileChooser;
 import javafx.stage.Window;
 
@@ -56,6 +55,7 @@ public class GuiController implements Initializable {
 
     @FXML
     ListView<LocalEvent> eventList;
+    ObservableList<LocalEvent> list = FXCollections.observableArrayList();
 
     @FXML
     ComboBox<String> cbMenu;
@@ -67,19 +67,17 @@ public class GuiController implements Initializable {
     @FXML
     private void addEventHandler() {
 
-        var newEvent = new LocalEvent(datePicker.getValue(), descriptionTextField.getText());
-
-        eventList.getItems().add(newEvent);
-
-        datePicker.setValue(LocalDate.now());
-
-        descriptionTextField.setText("");
+        list.add(new LocalEvent(datePicker.getValue(), descriptionTextField.getText()));
+        eventList.setItems(list);
+        refresh();
 
         unsavedChanges = true;
     }
 
-    public Object[] getEvents(){
-        return eventList.getItems().toArray();
+    private void refresh(){
+        datePicker.setValue(LocalDate.now());
+        descriptionTextField.setText(null);
+
     }
 
     @Override
@@ -87,8 +85,6 @@ public class GuiController implements Initializable {
         try {
             fileChooser.setInitialDirectory(new File("C:\\users"));
             cbMenu.setItems(menuList);
-            var events = EventSerializer.deserialize();
-            eventList.getItems().addAll(events);
         }catch(Exception e)  {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("TodoFX");
@@ -155,7 +151,6 @@ public class GuiController implements Initializable {
             LocalDate localDate = LocalDate.parse(date,formatter);
             LocalEvent localEvent = new LocalEvent(localDate,description,getCompleted);
         }
-        // TODO: code for opening a txt file.
     }
 
     @FXML

@@ -5,14 +5,10 @@
 
 package app;
 
-import java.io.Serial;
-import java.io.Serializable;
 import java.time.LocalDate;
 
-public class LocalEvent implements Serializable {
+public class LocalEvent {
 
-    @Serial
-    private static final long serialVersionUID = 1L;
 
     // Variables used in the To do list.
     private LocalDate date;
@@ -44,12 +40,12 @@ public class LocalEvent implements Serializable {
         this.completed= true;
     }
 
-    // LocalEvent Constructor:
+    // LocalEvent Constructor.
     public LocalEvent(LocalDate date, String description){
         this.setDate(date);
         this.setDescription(description);
     }
-
+    // LocalEvent Constructor with boolean completed.
     public LocalEvent(LocalDate date, String description, boolean completed){
         this.setDate(date);
         this.setDescription(description);

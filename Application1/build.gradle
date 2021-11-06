@@ -24,7 +24,7 @@ tasks.withType(JavaCompile) {
 
 application {
     mainModule = 'app'
-    mainClass = 'app.TodoList'
+    mainClass = 'app.TodoListApplication'
 }
 
 javafx {
